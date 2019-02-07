@@ -12,7 +12,7 @@ var start = function(){
         var picture = document.createElement("img");
         picture.setAttribute("src","white_back.PNG");
         picture.setAttribute("id",ID)
-        var clk="document.getElementById("+ID+").setAttribute('src',x.png)";
+        var clk="document.getElementById('"+ID+"').setAttribute('src',x.png)";
         picture.setAttribute("onclick",clk);
         picture.setAttribute("width","200");
         picture.setAttribute("height","200");
@@ -24,7 +24,6 @@ var start = function(){
 }
 
 var myMove = function(){
-  var notYet = false;
   var strs= ["00","01","02","10","11","12","20","21","22"];
   for(var i=0;i<9;i++){
     var name = "picture"+strs[i];
