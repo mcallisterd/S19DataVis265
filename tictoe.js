@@ -10,12 +10,12 @@ var start = function(){
         var ID="picture"+j.toString()+i.toString();
         var tableElement= document.createElement("td");
         var picture = document.createElement("img");
-        picture.setAttribute("src","white_back.PNG");
-        picture.setAttribute("id",ID)
+        picture.src="white_back.PNG";
+        picture.id=ID
         var clk="document.getElementById('"+ID+"').setAttribute('src','x.png')";
-        picture.setAttribute("onclick",clk);
-        picture.setAttribute("width","200");
-        picture.setAttribute("height","200");
+        picture.onclick=clk;
+        picture.width="200";
+        picture.height="200";
         tableElement.appendChild(picture);
         r.appendChild(tableElement);
       }
@@ -30,12 +30,14 @@ var myMove = function(){
     var name = "picture"+strs[i];
     var pic= document.getElementById(name);
     if(pic.getAttribute('src')=="white_back.PNG" && !yet){
-      pic.setAttribute("src","o.jpg")
+      pic.src="o.jpg"
       pic.removeAttribute("onclick")
       yet= true;
     }
     else {
-      pic.removeAttribute("onclick")
+      try {
+        pic.removeAttribute("onclick")
+      }
     }
   }
 }
