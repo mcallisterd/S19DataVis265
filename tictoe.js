@@ -12,7 +12,7 @@ var start = function(){
         var picture = document.createElement("img");
         picture.setAttribute("src","white_back.PNG");
         picture.setAttribute("id",ID)
-        var clk="document.getElementById('"+ID+"').setAttribute('src',x.png)";
+        var clk="document.getElementById('"+ID+"').setAttribute('src','x.png')";
         picture.setAttribute("onclick",clk);
         picture.setAttribute("width","200");
         picture.setAttribute("height","200");
