@@ -24,13 +24,18 @@ var start = function(){
 }
 
 var myMove = function(){
+  var yet=false;
   var strs= ["00","01","02","10","11","12","20","21","22"];
   for(var i=0;i<9;i++){
     var name = "picture"+strs[i];
     var pic= document.getElementById(name);
-    if(pic.getAttribute('src')=="white_back.PNG"){
+    if(pic.getAttribute('src')=="white_back.PNG" && !yet){
       pic.setAttribute("src","o.jpg")
-      break;
+      pic.removeAttribute("onclick")
+      yet= true;
+    }
+    else {
+      pic.removeAttribute("onclick")
     }
   }
 }
