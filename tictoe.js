@@ -5,7 +5,6 @@ var start = function(){
 
   for(var i=1;i<4;i++){
       var r= document.createElement("tr");
-
       for(var j=0; j<3;j++){
         var ID="picture"+j.toString()+i.toString();
         var tableElement= document.createElement("td");
@@ -37,6 +36,9 @@ var myMove = function(){
     else {
       try {
         pic.removeAttribute("onclick")
+      }
+      catch{
+        console.log(i);
       }
     }
   }
