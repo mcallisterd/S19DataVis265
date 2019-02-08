@@ -21,20 +21,3 @@ var start = function(){
       t.appendChild(r);
   }
 }
-
-var myMove = function(){
-  var yet=false;
-  var strs= ["00","01","02","10","11","12","20","21","22"];
-  for(var i=0;i<9;i++){
-    var name = "picture"+strs[i];
-    var pic= document.getElementById(name);
-    if(pic.getAttribute('src')=="white_back.PNG" && !yet){
-        pic.src="o.jpg"
-        pic.removeAttribute("onclick")
-        yet= true;
-    }
-    elseif(pic.getAttribute("src")=="x.png"){
-      pic.removeAttribute("onclick")
-    }
-  }
-}
