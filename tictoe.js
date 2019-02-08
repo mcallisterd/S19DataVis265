@@ -27,15 +27,11 @@ var myMove = function(){
   var strs= ["01","02","03","11","12","13","21","22","23"];
   for(var i=0;i<9;i++){
     var name = "picture"+strs[i];
-    console.log(name)
     var pic= document.getElementById(name);
-    console.log(pic.src);
-    console.log(pic.src==="white_back.PNG");
     if(pic.src==="https://mcallisterd.github.io/S19DataVis265/white_back.PNG" && go){
         pic.src="o.jpg"
         pic.removeAttribute("onclick")
         go= false;
-
     }
   }
 }
