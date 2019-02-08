@@ -31,7 +31,7 @@ var myMove = function(){
     var pic= document.getElementById(name);
     console.log(pic.src);
     console.log(pic.src==="white_back.PNG");
-    if(pic.src==="white_back.PNG" && go){
+    if(pic.src==="https://mcallisterd.github.io/S19DataVis265/white_back.PNG" && go){
         pic.src="o.jpg"
         pic.removeAttribute("onclick")
         go= false;
