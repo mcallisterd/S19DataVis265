@@ -28,10 +28,12 @@ var myMove = function(){
   for(var i=0;i<9;i++){
     var name = "picture"+strs[i];
     var pic= document.getElementById(name);
-    if(pic.getAttribute('src')=="white_back.PNG" && !yet){
-      pic.src="o.jpg"
-      pic.removeAttribute("onclick")
-      yet= true;
+    if(pic.getAttribute('src')=="white_back.PNG"){
+        if(!yet){
+          pic.src="o.jpg"
+          pic.removeAttribute("onclick")
+          yet= true;
+      }
     }
     else {
       try {
