@@ -3,23 +3,65 @@
   <head>
     <meta charset="utf-8">
     <script type="text/javascript">
-      var numbers() = function(){
-        var nums = [11,4,41,50,7,19,8,18,2,6,43,6,20,43,2,23,12,24,31,29];
-        document.getElementById("words").para.innerHTML = nums.join(" ");
-      }
-      var mean() = function(){
+      var nums = [11,4,41,50,7,19,8,18,2,6,43,6,20,43,2,23,12,24,31,29];
 
+      var numbers = function(){
+        document.getElementById("words").innerText = "Numbers: "+nums.join();
+      };
+      var mean = function(){
+        var tot=0;
+        nums.forEach(function(d){tot+=d;});
+        document.getElementById("mean").innerText = (tot/nums.length).toString();
+      };
+      var mode = function(){
+        var big=-1;
+        var place=-1;
+
+        var max = function(array){
+          array.forEach(function(d,i){
+            if(d>big){
+              big=d;
+              place=i;
+            }
+          });
+        }
+        var counts = [];
+        nums.forEach(function(d){
+          if(counts[d]!=undefined){
+            counts[d]++;
+          }
+          else{
+            counts[d]=1;
+          }
+        });
+        max(counts);
+        document.getElementById("mode").innerText = place.toString();
+      };
+      var median = function(){
+          nums.sort();
+          document.getElementById("median").innerText = ((nums[10]+nums[9])/2).toString();
       }
     </script>
   </head>
   <body onload="numbers();">
-    <p id="words" />
-    <button type="button" id="mean" onclick="mean();">
+    <p id="words"> </p>
+    <table> <tr>
+    <td>
+    <button type="button" onclick="mean();">
     Find the mean of the numbers</button>
-    <button type="button" id="mode" onclick="mode();">
+  </td>
+  <td>
+    <button type="button" onclick="mode();">
     Find the mode of the numbers</button>
-    <button type="button" id="median" onclick="median()">
+  </td>
+  <td>
+    <button type="button" onclick="median()">
     Find the median of the numbers</button>
+  </td>
+</tr>
+<tr>
+  <td id="mean" /> <td id="mode" /> <td id="median" />
+</tr>
   </body>
 
 </html>
