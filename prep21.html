@@ -14,31 +14,25 @@
         document.getElementById("mean").innerText = (tot/nums.length).toString();
       };
       var mode = function(){
-        var big=-1;
-        var place=-1;
-
-        var max = function(array){
-          array.forEach(function(d,i){
-            if(d>big){
-              big=d;
-              place=i;
-            }
-          });
-        }
-        var counts = [];
-        nums.forEach(function(d){
-          if(counts[d]!=undefined){
-            counts[d]++;
-          }
-          else{
-            counts[d]=1;
-          }
+        var modes=[];
+        var counts=[];
+        counts[50]=0;
+        nums.forEach(function(d,i){
+          counts[i]++;
         });
-        max(counts);
-        document.getElementById("mode").innerText = place.toString();
+        var max = function(array){
+          return array.sorted(function(a,b){return a-b;})[array.length-1];
+        }
+        var m=max(count);
+        counts.forEach(function(d,i){
+          if(d==m){
+            modes.push(i);
+          }
+        })
+        document.getElementById("mode").innerText = modes.toString();
       };
       var median = function(){
-          nums.sort();
+          nums.sort(function(a,b){return a-b;});
           document.getElementById("median").innerText = ((nums[10]+nums[9])/2).toString();
       }
 
