@@ -17,19 +17,32 @@
         var modes=[];
         var counts=[];
         counts[50]=0;
-        nums.forEach(function(d,i){
-          counts[i]++;
-        });
-        var max = function(array){
-          return array.sorted(function(a,b){return a-b;})[array.length-1];
+        for(var i=0;i<51;i++){
+          counts[i]=0;
         }
-        var m=max(count);
+        nums.forEach(function(d,i){
+          counts[d]++;
+        });
+        console.log(counts);
+        var max = function(array){
+          var copy = [];
+          array.forEach(function(d,i){
+            copy[i]=d;
+          });
+          return copy.sort(function(a,b){return a-b;})[array.length-1];
+        }
+        var m=max(counts);
         counts.forEach(function(d,i){
           if(d==m){
             modes.push(i);
           }
         })
-        document.getElementById("mode").innerText = modes.toString();
+        console.log(modes);
+        console.log(m);
+        var s = "";
+        modes.forEach(function(d){s+=" "+d.toString();});
+        document.getElementById("mode").innerText = s;
+        console.log(s);
       };
       var median = function(){
           nums.sort(function(a,b){return a-b;});
