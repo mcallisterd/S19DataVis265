@@ -41,6 +41,13 @@
           nums.sort();
           document.getElementById("median").innerText = ((nums[10]+nums[9])/2).toString();
       }
+
+      var graph = function(){
+        var g=document.getElementById("graph");
+        var pic = document.createElement("img");
+        pic.src="bar_graph_21.png";
+        g.appendChild(pic);
+      }
     </script>
   </head>
   <body onload="numbers();">
@@ -58,9 +65,13 @@
     <button type="button" onclick="median()">
     Find the median of the numbers</button>
   </td>
+  <td>
+    <button onclick="graph()">
+      Graph the Numbers</button>
+  </td>
 </tr>
 <tr>
-  <td id="mean" /> <td id="mode" /> <td id="median" />
+  <td id="mean" /> <td id="mode" /> <td id="median" /><td id="graph" / >
 </tr>
   </body>
 
