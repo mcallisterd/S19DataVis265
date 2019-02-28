@@ -11,7 +11,9 @@
   <script type="text/javascript">
         d3.select("body").append("p").text("Something new");
         d3.csv("numbers.csv",function(data){
-          console.log(data);
+          dataset=data;
         });
+        console.log(dataset);
+        //d3.select("body").append("t").append(tr)
   </script>
 </html>
