@@ -10,10 +10,15 @@
   </body>
   <script type="text/javascript">
         d3.select("body").append("p").text("Something new");
+        var dataset=[];
         d3.csv("numbers.csv",function(data){
-          dataset=data;
+          dataset.push(data);
         });
-        console.log(dataset);
-        //d3.select("body").append("t").append(tr)
+        d3.select("body")
+          .selectAll("p")
+          .data(dataset)
+          .enter()
+          .append("p")
+          .text(function(d){return d;});
   </script>
 </html>
