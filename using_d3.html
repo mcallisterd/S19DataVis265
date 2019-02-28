@@ -9,16 +9,22 @@
 
   </body>
   <script type="text/javascript">
-        d3.select("body").append("p").text("Something new");
-        var dataset=[];
-        d3.csv("numbers.csv",function(data){
-          dataset.push(data);
-        });
+        var dataset=["Dog","Cat","Fish","Horse","Whale"];
         d3.select("body")
-          .selectAll("p")
+          .selectAll("li")
           .data(dataset)
           .enter()
-          .append("p")
+          .append("li")
+          .text(function(d){return d;});
+        dataset=[];
+        d3.csv("numbers.csv",function(d){
+          dataset.push(d[0]);
+        });
+        d3.select("body")
+          .selectAll("tr")
+          .data(dataset)
+          .enter()
+          .append("tr")
           .text(function(d){return d;});
   </script>
 </html>
