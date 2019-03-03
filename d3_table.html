@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+  td {
+      border: 2px solid black;
+  }
+  div{
+    width:300px;
+    height:30px;
+  }
+  </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript">
+    var happen = function(){
+
+      d3.csv("numbers.csv").then(function(d){
+        var t = d3.select("body").append("table");
+        var rows = d3.select("table")
+                     .selectAll("tr")
+                     .data(d)
+                     .enter()
+                     .append("tr");
+
+       var attrs= Object.getOwnPropertyNames(d[0]);
+       attrs.forEach(function(name){
+         console.log(name)
+         if(!(name==="color")){
+           rows.append("td")
+               .text(function(d){
+                 return d[name];
+               });
+          }
+        else{
+          rows.append("td")
+              .append("div")
+              .attr("style",function(d2){
+                return "background-color:"+d2.color;
+              });
+        }
+    });
+     });
+    };
+  </script>
+  <body onload = "happen();">
+    <table>
+      <tr>
+        <td>Number</td>
+        <td>Prime?</td>
+        <td>Number of Factors</td>
+      </tr>
+    </table>
+  </body>
+
+</html>
