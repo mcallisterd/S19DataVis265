@@ -96,6 +96,4 @@ function drawChart(colorData,svgNAME){
          .attr("y",30)
          .attr("font-family","Trebuchet MS")
          .attr("font-size",30);
-
-
 }
