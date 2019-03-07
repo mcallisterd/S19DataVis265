@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    body{
+      background-color: #7f808d;
+    }
+    text#dot{
+      visibility:hidden
+    }
+    text{
+      fill:white
+    }
+  </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script type="text/javascript">
+    function happen(){
+      d3.csv("rewritten.csv").then(function(data){
+        process(data);
+      },
+      function(err){
+        console.log(err);
+      })
+    }
+    function process(d){
+      var width =1300;
+      var height= 600;
+      var dx = (width-300)/177;
+      var colors = {
+        "AFRICA ":"red",
+        "NORTH and CENTRAL AMERICA":"orange",
+        "EUROPE ":"yellow",
+        "FORMER SOVIET UNION":"blue",
+        "OCEANIA ":"green",
+        "ASIA ":"violet",
+        "SOUTH AMERICA":"purple"
+      };
+      var color2 =["red","orange","yellow","blue","green","violet","purple"];
+      var svg = d3.select("svg")
+                  .attr("width",width)
+                  .attr("height",height)
+                  .style("background-color","#7f808d");
+
+         svg.selectAll("circle")
+            .data(d)
+            .enter()
+            .append("circle")
+            .attr("cy",function(d){
+              return height - 30*Math.log2(d.water)-140;
+            })
+            .attr("cx",function(d,i){
+              return dx*i+5;
+            })
+            .attr("r",6)
+            .attr("fill",function(d){
+              return colors[d.continent];
+            })
+            .attr("onmouseover",function(d){
+              return "handleMouse('"+d.country+"','on')";
+            })
+            .attr("onmouseout",function(d){
+              return "handleMouse('"+d.country+"','off')";
+            });
+          var color = Object.keys(colors);
+          svg.selectAll("rect#legend")
+             .data(color)
+             .enter()
+             .append("rect")
+             .attr("x",width-300)
+             .attr("y",function(d,i){
+               return i*20
+             })
+             .attr("width",15)
+             .attr("height",15)
+             .attr("fill",function(d){
+               return colors[d];
+             })
+             .attr("id","legend");
+           svg.selectAll("text")
+              .data(d)
+              .enter()
+              .append("text")
+              .text(function(d){
+                return d.country;
+              })
+              .attr("x",function(d,i){
+                return dx*i+10
+              })
+              .attr("y",function(d){
+                return height-30*Math.log2(d.water)-135;
+              })
+              .attr("fill","black")
+              .attr("id","dot")
+              .attr("class",function(d){
+                console.log(d.country.split(" ").join(""));
+                return d.country.split(" ").join("");
+              });
+           svg.selectAll("text#legend")
+              .data(color)
+              .enter()
+              .append("text")
+              .text(function(d){
+                return d;
+              })
+              .attr("x",width-280)
+              .attr("y",function(d,i){
+                return i*20+13;
+              })
+              .attr("fill","black");
+            svg.selectAll("text#NAME")
+               .data(["Water Availability by Country"])
+               .enter()
+               .append("text")
+               .text(function(d){
+                 return d;
+               })
+               .attr("x",width/2-250)
+               .attr("y",30)
+               .attr("font-family","Trebuchet MS")
+               .attr("font-size",30);
+    }
+
+    function handleMouse(c,mode){
+      if(mode==="on"){
+        d3.select("text."+c.split(" ").join(""))
+          .style("visibility","visible");
+      }
+      else{
+        d3.select("text."+c.split(" ").join(""))
+          .style("visibility","hidden");
+      }
+    }
+  </script>
+  <body onload="happen()">
+<svg>
+
+</svg>
+  </body>
+</html>
