@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <style media="screen">
+    body{
+      width:700px;
+    }
+    div.grade_type button{
+      clear:right;
+      position:relative;
+      float:right
+    }
+    p{
+      position:relative;
+      float:right;
+    }
+    div.grade_type{
+      position:relative;
+      top:-400px;
+    }
+  </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="day_javas.js"></script>
+  <body>
+<svg class="first">
+
+</svg>
+    <svg class="second">
+    </svg>
+    <div class="grade_type">
+      <button type="button" onclick="update(0,'quizes')">Quiz</button>
+      <button type="button" onclick="update(0,'homework')">Homework</button>
+      <button type="button" onclick="update(0,'test')">Test</button>
+      <button type="button" onclick="update(0,'final')">Final</button>
+      <br>
+      <p></p>
+    </div>
+    <div class="single_step">
+      <button type="button" onclick="update(-20)">Previous Day</button>
+      <button type="button" onclick="update(-10)">Next Day</button>
+    </div>
+  </body>
+</html>
