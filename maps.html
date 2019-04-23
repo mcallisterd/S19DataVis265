@@ -9,7 +9,18 @@ is distorted by a Mercator projection means one probably ought not use it. Overa
  but important detail in creating a map-based data visualization, which is often a (admittedly small, usually) mistake that is made
  in designing one.
  <br/>
- Another mistake in map visualizations can be made when using 
+ Another mistake in map visualizations can be made when using scales: gradient color scales and shapes which represent data, like circles,
+ can be difficult to use properly. Color scales can go wrong by providing too little contrast to effectively allow a consumer of your
+ visualization to distinguish one country or state, for example, from another. Even if the colors are easy to distinguish, if large areas
+ of the map are the same color, one could probably adjust the scale to more effectively delineate nuances in the data, where there is a 
+ particular breakpoint or dividing line. Circles and size representations of data can go wrong in myraid ways. If you were presenting data
+ on a global level, as Cairo mentions, you would emphasize large countries' data more than small countries, if they are not size-adjusted,
+ simply because of the geographic reality, while the most interesting, revelatory portion of your visualization may concern medium to small
+ countries in particular, and the U.S. and Russia are essentially irrelevant, but occupy a great deal of visual real estate. If you use circles
+ to represent data points, then Cairo emphasizes that scaling them properly is essential, lest you double your intended magnification. Finally,
+ in using size to show data, the visualization can get very visually "busy," with a great number of pieces crammed in. Rescaling to ensure
+ that the small pieces of the visualization aren't obscured by large ones, and that the map isn't overly demanding of your consumer, can 
+ ensure your message is more effectively communicated.
 </p>
 </body>
 </html>
